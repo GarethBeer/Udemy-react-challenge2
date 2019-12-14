@@ -1,7 +1,7 @@
 import React from "react";
 
 const Character = props => {
-	const { char } = props;
+	const { char, Click } = props;
 	const style = {
 		display: "inline-block",
 		padding: "16px",
@@ -9,7 +9,11 @@ const Character = props => {
 		margin: "16px",
 		border: "1px solid black"
 	};
-	return <p style={style}>{char}</p>;
+	return (
+		<p style={style} onClick={Click}>
+			{char}
+		</p>
+	);
 };
 
 export default Character;

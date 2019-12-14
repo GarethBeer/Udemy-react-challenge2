@@ -15,15 +15,35 @@ class App extends Component {
 			inputField: inputText
 		});
 	};
+
+	handleRemoveCharacter = index => {
+		const text = this.state.inputField.split("");
+		text.splice(index, 1);
+
+		const updatedText = text.join("");
+
+		this.setState({
+			inputField: updatedText
+		});
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<h1>Type something below:</h1>
-				<input type="text" onChange={this.handleOnChange} />
+				<input
+					type="text"
+					onChange={this.handleOnChange}
+					value={this.state.inputField}
+				/>
 				<p>{this.state.inputField}</p>
 				<Validation textLength={this.state.inputField.length} />
 				{this.state.inputField.split("").map((char, index) => (
-					<Character char={char} key={index} />
+					<Character
+						char={char}
+						key={index}
+						Click={() => this.handleRemoveCharacter(index)}
+					/>
 				))}
 			</div>
 		);
